@@ -4,10 +4,14 @@ import * as DataLoader from 'dataloader';
 import { User } from '../users/user.entity';
 import { Post } from './post.entity';
 import { PostsService } from './posts.service';
+import { UsersService } from '../users/users.service';
 
 @Resolver(Post)
 export class PostsResolver {
-  constructor(private readonly postsService: PostsService) {}
+  constructor(
+    private readonly postsService: PostsService,
+    private readonly usersService: UsersService,
+  ) {}
 
   @Query(() => [Post], { name: 'posts' })
   getPosts() {
@@ -20,6 +24,6 @@ export class PostsResolver {
     @Context('usersLoader') usersLoader: DataLoader<number, User>,
   ) {
     const { userId } = post;
-    return usersLoader.load(userId);
+    return this.usersService.getUser(userId);
   }
 }
