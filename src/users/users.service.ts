@@ -14,19 +14,19 @@ export class UsersService {
 
   async getUsers() {
     console.log('Getting users...');
-    await delay(3000);
+    await delay(500);
     return this.users;
   }
 
   async getUser(id: number) {
     console.log(`Getting user with id ${id}...`);
-    await delay(1000);
+    await delay(500);
     return this.users.find((user) => user.id === id);
   }
 
   async getUsersByIds(ids: readonly number[]) {
     console.log(`Getting users with ids (${ids.join(',')})`);
-    await delay(1000);
+    await delay(500);
     return this.users.filter((u) => ids.includes(u.id));
   }
 }

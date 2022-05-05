@@ -13,7 +13,7 @@ export class PostsService {
 
   async getPosts() {
     console.log('Getting posts...');
-    await delay(3000);
+    await delay(500);
     return this.posts;
   }
 }
